@@ -28,18 +28,31 @@ module.exports = function( grunt ) {
                     src: ["src/**/*.js"]
                 }
             }
+        },
+        uglify: {
+            app: {
+                files: {
+                    "build/app-code.min.js": ["src/js/app.js", "src/**/*.js"]
+                }
+            },
+            options: {
+                sourceMap: true,
+                sourceMapName: "build/app-code-source.map",
+                sourceMapIncludeSources: true
+            }
         }
     });
 
     grunt.loadNpmTasks( "grunt-contrib-concat" );
     grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
 
 
     grunt.registerTask( "helloWorld", "Say hello", function() {
         grunt.log.write( "Hello World!" );
     });
 
-    grunt.registerTask( "build", [ "jshint", "concat:libs", "concat:vendor" ]);
+    grunt.registerTask( "build", [ "jshint", "concat:libs", "concat:vendor", "uglify" ]);
 
     grunt.registerTask( "default", [ "build" ] );
 };

@@ -21,7 +21,7 @@ var beerApp = (function() {
 
         getName: function() {
             return "Beers";
-        },
+        }
     };
 
     return App;
