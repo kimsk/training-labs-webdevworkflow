@@ -40,19 +40,24 @@ module.exports = function( grunt ) {
                 sourceMapName: "build/app-code-source.map",
                 sourceMapIncludeSources: true
             }
+        },
+        qunit: {
+            search: ["specs/*.html"]
         }
     });
 
     grunt.loadNpmTasks( "grunt-contrib-concat" );
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-qunit");
+
 
 
     grunt.registerTask( "helloWorld", "Say hello", function() {
         grunt.log.write( "Hello World!" );
     });
 
-    grunt.registerTask( "build", [ "jshint", "concat:libs", "concat:vendor", "uglify" ]);
+    grunt.registerTask( "build", [ "jshint", "concat:libs", "concat:vendor", "uglify", "qunit" ]);
 
     grunt.registerTask( "default", [ "build" ] );
 };
