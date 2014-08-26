@@ -1,5 +1,5 @@
-window.beerApp = (function() {
-    "user strict";
+var beerApp = (function() {
+    "use strict";
 
     var App = function( options) {
         options = options || {};
@@ -7,7 +7,7 @@ window.beerApp = (function() {
         this.resources = options.resources || [];
         this.debug = true;
 
-        if (options.viewModel && typeof options.viewModel == 'function') {
+        if (options.viewModel && typeof options.viewModel === "function") {
           this.activeViewModel = new options.viewModel();
           this.activeViewModel.initialize((options.complete || function(){}).bind(this));
         } else {
@@ -20,7 +20,7 @@ window.beerApp = (function() {
         activeViewModel: null,
 
         getName: function() {
-            return "Beers"
+            return "Beers";
         },
     };
 

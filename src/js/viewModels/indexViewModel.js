@@ -1,6 +1,6 @@
 window.beerApp = (window.beerApp || {});
 window.beerApp.IndexViewModel = (function($, Beer) {
-    "user strict";
+    "use strict";
 
     var IndexViewModel = function() {
         this.beers = [];
@@ -30,11 +30,11 @@ window.beerApp.IndexViewModel = (function($, Beer) {
                 return text.replace(/\(([^\)]+)\)/g, "<span class='note'>($1)</span>");
             });
 
-            node.append("<li>" + beerContent.join('</li><li>') + "</li>");
+            node.append("<li>" + beerContent.join("</li><li>") + "</li>");
         },
 
         filterBeers: function(filter) {
-            var filter = (filter && filter.toLowerCase());
+            filter = (filter && filter.toLowerCase());
 
             if ( !filter ) {
                 return this.beers;
@@ -61,12 +61,12 @@ window.beerApp.IndexViewModel = (function($, Beer) {
 
         doSearch: function(cb) {
             // Let's pretend we do an ajax call here for the beers
-            setTimeout(function() {
+            window.setTimeout(function() {
                 cb([
                     {
                         name: "Monkey King",
                         brewery: "New Holland",
-                        description: 'Saison',
+                        description: "Saison",
                         abv: 6.6
                     },
                     {
