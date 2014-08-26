@@ -43,6 +43,15 @@ module.exports = function( grunt ) {
         },
         qunit: {
             search: ["specs/*.html"]
+        },
+        watch: {
+            scripts: {
+                files: ['src/**/*.js', 'specs/**/*.js'],
+                tasks: ['jshint', "qunit"],
+                options: {
+                    spawn: false,
+                }
+            }
         }
     });
 
@@ -50,6 +59,7 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-qunit");
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
 
 
@@ -57,7 +67,7 @@ module.exports = function( grunt ) {
         grunt.log.write( "Hello World!" );
     });
 
-    grunt.registerTask( "build", [ "jshint", "concat:libs", "concat:vendor", "uglify", "qunit" ]);
+    grunt.registerTask( "build", [ "jshint", "qunit", "concat:libs", "concat:vendor", "uglify" ]);
 
     grunt.registerTask( "default", [ "build" ] );
 };
