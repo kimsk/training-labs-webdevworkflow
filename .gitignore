@@ -67,3 +67,4 @@ node_modules
 .lock-wscript
 
 build/
+public/
